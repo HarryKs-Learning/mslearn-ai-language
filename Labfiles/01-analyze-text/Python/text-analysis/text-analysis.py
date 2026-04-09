@@ -2,6 +2,9 @@ from dotenv import load_dotenv
 import os
 
 # Import namespaces
+# import namespaces
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
 
 
 def main():
@@ -15,6 +18,12 @@ def main():
 
 
         # Create client using endpoint
+         ai_endpoint = os.getenv('ai_endpoint')
+         ai_key = os.getenv('ai_key')
+ 
+        # Create client using endpoint and key
+        credential = AzureKeyCredential(ai_key)
+        ai_client = TextAnalyticsClient(endpoint=ai_endpoint, credential=credential
 
 
         # Analyze each text file in the reviews folder
