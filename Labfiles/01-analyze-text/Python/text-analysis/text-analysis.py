@@ -35,7 +35,9 @@ def main():
             print('\n' + text)
 
             # Get language
-
+            # Get language
+            detectedLanguage = ai_client.detect_language(documents=[text])[0]
+            print('\nLanguage: {}'.format(detectedLanguage.primary_language.name))
 
 
             # Get entities
@@ -44,6 +46,9 @@ def main():
 
             # Get PII
 
+            # Get sentiment
+            sentimentAnalysis = ai_client.analyze_sentiment(documents=[text])[0]
+            print("\nSentiment: {}".format(sentimentAnalysis.sentiment))
 
 
     except Exception as ex:
